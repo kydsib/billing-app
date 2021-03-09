@@ -5,15 +5,7 @@ import CompanyDetails from '../CompanyDetails'
 
 describe('<CompanyDetails />', () => {
 	it('Renders correctly with default values', () => {
-		const props = {
-			companyName: 'Candies Trade LTD',
-			companyAddress: 'Isgalvota 22, LT0342, Vilnius',
-			companyCountry: 'Lithuania',
-			companyCode: '3023123121',
-			companyVatNumber: 'LT0012121212112',
-			companyTelephone: '370020202020',
-		}
-		render(<CompanyDetails {...props} />)
+		render(<CompanyDetails />)
 
 		const companyName = screen.getByRole('textbox', {
 			name: 'Company Name:',
@@ -31,6 +23,7 @@ describe('<CompanyDetails />', () => {
 		const companyName = screen.getByRole('textbox', {
 			name: 'Company Name:',
 		})
+		userEvent.clear(companyName)
 		userEvent.type(companyName, 'New Trade LTD')
 
 		expect(companyName).toHaveValue('New Trade LTD')

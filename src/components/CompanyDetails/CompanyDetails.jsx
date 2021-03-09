@@ -1,24 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const CompanyDetails = ({
-	companyName,
-	companyAddress,
-	companyCountry,
-	companyCode,
-	companyVatNumber,
-	companyTelephone,
-}) => {
-	// use one obj instead of many separate fields?
-	const [name, setName] = useState(companyName)
-	const [address, setAddress] = useState(companyAddress)
-	const [country, setCountry] = useState(companyCountry)
-	const [code, setCode] = useState(companyCode)
-	const [vat, setVat] = useState(companyVatNumber)
-	const [phone, setPhone] = useState(companyTelephone)
+import useFrom from '../../hooks/useForm/useForm'
 
-	function handleChange() {}
-
-	function handleSubmit() {}
+const CompanyDetails = () => {
+	const { handleChange, handleSubmit, values, errors } = useFrom()
 
 	return (
 		<form onSubmit={handleSubmit}>
@@ -26,26 +11,28 @@ const CompanyDetails = ({
 				<label htmlFor="name">
 					Company Name:
 					<input
-						name="Company Name"
+						name="name"
 						onChange={handleChange}
 						id="name"
-						value={name}
+						defaultValue={values.name}
 					/>
 				</label>
 				<label htmlFor="address">
 					Address:
 					<input
+						name="address"
 						onChange={handleChange}
 						id="address"
-						value={address}
+						defaultValue={values.address}
 					/>
 				</label>
 				<label htmlFor="country">
 					Country:
 					<input
+						name="country"
 						onChange={handleChange}
 						id="country"
-						value={country}
+						defaultValue={values.country}
 					/>
 				</label>
 			</div>
@@ -53,18 +40,29 @@ const CompanyDetails = ({
 				<label htmlFor="company-code">
 					Company Code:
 					<input
+						name="code"
 						onChange={handleChange}
 						id="company-code"
-						value={code}
+						defaultValue={values.code}
 					/>
 				</label>
 				<label htmlFor="vat">
 					Vat:
-					<input onChange={handleChange} id="vat" value={vat} />
+					<input
+						name="vat"
+						onChange={handleChange}
+						id="vat"
+						defaultValue={values.vat}
+					/>
 				</label>
 				<label htmlFor="phone">
 					Phone number:
-					<input onChange={handleChange} id="phone" value={phone} />
+					<input
+						name="phone"
+						onChange={handleChange}
+						id="phone"
+						defaultValue={values.phone}
+					/>
 				</label>
 			</div>
 		</form>
