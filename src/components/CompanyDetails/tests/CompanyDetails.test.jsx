@@ -6,23 +6,21 @@ import CompanyDetails from '../CompanyDetails'
 describe('<CompanyDetails />', () => {
 	it('Renders correctly with default values', () => {
 		render(<CompanyDetails />)
-
 		const companyName = screen.getByRole('textbox', {
-			name: 'Company Name:',
+			name: /company name/i,
 		})
-		expect(companyName).toHaveValue('Candies Trade LTD')
-
 		const vatNumber = screen.getByRole('textbox', { name: /vat/i })
 
+		expect(companyName).toHaveValue('Candies Trade LTD')
 		expect(vatNumber).toHaveValue('LT0012121212112')
 	})
 
 	it('Allows user to edit default values', () => {
 		render(<CompanyDetails />)
-
 		const companyName = screen.getByRole('textbox', {
-			name: 'Company Name:',
+			name: /company name/i,
 		})
+
 		userEvent.clear(companyName)
 		userEvent.type(companyName, 'New Trade LTD')
 

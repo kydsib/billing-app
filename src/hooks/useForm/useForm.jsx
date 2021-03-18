@@ -8,6 +8,13 @@ const useForm = () => {
 		code: '3023123121',
 		vat: 'LT0012121212112',
 		phone: '370020202020',
+		no: '',
+		date: '',
+		poRef: '',
+		terms: '',
+		shipVia: '',
+		accountNo: '',
+		preparedBy: 'Paul',
 	})
 
 	const [errors, setErrors] = useState()
