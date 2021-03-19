@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 
+import NewPartInput from '../NewPartInput/NewPartInput'
 import SinglePart from '../SinglePart/SinglePart'
 
 const PartList = () => {
-	const [partData, setPartData] = useState({
+	const initialState = {
 		id: '',
 		partNo: '',
 		qty: '',
 		unit: '',
 		condition: '',
 		unitPrice: '',
-	})
+	}
+	const [partData, setPartData] = useState(initialState)
 	const [partList, setPartList] = useState([])
 
 	function handleSubmit() {
@@ -19,14 +21,7 @@ const PartList = () => {
 		const newPart = { ...partData, id }
 
 		setPartList((prev) => [...prev, newPart])
-		setPartData({
-			id: '',
-			partNo: '',
-			qty: '',
-			unit: '',
-			condition: '',
-			unitPrice: '',
-		})
+		setPartData(initialState)
 	}
 
 	function handleChange(event) {
@@ -39,15 +34,14 @@ const PartList = () => {
 	}
 
 	function handleDelete(id) {
-		const valuesAfterDelete = partList.filter((item) => item.id !== id)
-		setPartList([...valuesAfterDelete])
+		const newState = partList.filter((item) => item.id !== id)
+		setPartList([...newState])
 	}
 
 	function handleSave(data) {
 		const unchangedParts = partList.filter((item) => item.id !== data.id)
 
 		const newData = [...unchangedParts, data]
-		console.log(newData)
 
 		setPartList(newData)
 	}
@@ -66,50 +60,10 @@ const PartList = () => {
 				</tr>
 				<tr key="static">
 					<td>Enter new</td>
-					<td>
-						<input
-							type="text"
-							placeholder="Part No / Description"
-							name="partNo"
-							value={partData.partNo}
-							onChange={handleChange}
-						/>
-					</td>
-					<td>
-						<input
-							name="qty"
-							type="number"
-							placeholder="Quantity"
-							value={partData.qty}
-							onChange={handleChange}
-						/>
-					</td>
-					<td>
-						<input
-							name="unit"
-							placeholder="Unit"
-							value={partData.unit}
-							onChange={handleChange}
-						/>
-					</td>
-					<td>
-						<input
-							name="condition"
-							placeholder="Condition"
-							value={partData.condition}
-							onChange={handleChange}
-						/>
-					</td>
-					<td>
-						<input
-							name="unitPrice"
-							placeholder="Unit Price"
-							type="number"
-							value={partData.unitPrice}
-							onChange={handleChange}
-						/>
-					</td>
-
+					<NewPartInput
+						partData={partData}
+						handleChange={handleChange}
+					/>
 					<td>
 						<button onClick={handleSubmit}>Add</button>
 					</td>
@@ -119,13 +73,8 @@ const PartList = () => {
 							<SinglePart
 								deleteHandler={handleDelete}
 								key={item.id}
+								item={item}
 								number={index + 1}
-								id={item.id}
-								partNo={item.partNo}
-								qty={item.qty}
-								unit={item.unit}
-								condition={item.condition}
-								unitPrice={item.unitPrice}
 								saveHandler={handleSave}
 							/>
 					  ))
