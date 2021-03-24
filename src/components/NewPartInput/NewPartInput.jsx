@@ -1,5 +1,6 @@
 import React from 'react'
 
+// what happens when I'm not passing testId?
 const NewPartInput = ({ partData, handleChange, testId }) => {
 	return (
 		<>

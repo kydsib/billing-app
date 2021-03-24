@@ -10,6 +10,7 @@ describe('<PartList />', () => {
 		expect(screen.getByTestId('partNo')).toBeInTheDocument()
 	})
 
+	// Should this be moved to SinglePart, and rendered with props passed?
 	it('pressing edit button allows to edit SinglePart data', () => {
 		render(<PartList />)
 

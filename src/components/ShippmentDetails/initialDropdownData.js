@@ -1,0 +1,61 @@
+const primaryData = [
+	{
+		id: 1,
+		companyName: 'Airbase ltd',
+		cityAndStreet: 'City Name, Street name',
+		country: 'Some random',
+		postalCode: 'ZJI001231',
+		aditionalCompanyDetails: 'If some aditional info is provided',
+		airport: 'Airport or airbase name',
+		shipToRegion: 'Region',
+		shipToCountry: 'Same country',
+	},
+	{
+		id: 2,
+		companyName: 'Seabase ltd',
+		cityAndStreet: 'City Name, Street name',
+		country: 'Some random',
+		postalCode: 'ZJI001231',
+		aditionalCompanyDetails: 'If some aditional info is provided',
+		airport: 'Airport or airbase name',
+		shipToRegion: 'Region',
+		shipToCountry: 'Same country',
+	},
+	{
+		id: 3,
+		companyName: 'Groundbase ltd',
+		cityAndStreet: 'City Name, Street name',
+		country: 'Some random',
+		postalCode: 'ZJI001231',
+		aditionalCompanyDetails: 'If some aditional info is provided',
+		airport: 'Airport or airbase name',
+		shipToRegion: 'Region',
+		shipToCountry: 'Same country',
+	},
+	{
+		id: 4,
+
+		companyName: 'aira ltd',
+		cityAndStreet: 'City Name, Street name',
+		country: 'Some random',
+		postalCode: 'ZJI001231',
+		aditionalCompanyDetails: 'If some aditional info is provided',
+		airport: 'Airport or airbase name',
+		shipToRegion: 'Region',
+		shipToCountry: 'Same country',
+	},
+	{
+		id: 5,
+
+		companyName: 'Cabase ltd',
+		cityAndStreet: 'City Name, Street name',
+		country: 'Some random',
+		postalCode: 'ZJI001231',
+		aditionalCompanyDetails: 'If some aditional info is provided',
+		airport: 'Airport or airbase name',
+		shipToRegion: 'Region',
+		country: 'Same country',
+	},
+]
+
+export default primaryData

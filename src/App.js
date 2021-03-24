@@ -1,11 +1,11 @@
-// import LandingPage from './pages/LandingPage/LandingPage'
-import PartList from './components/PartList/PartList'
+import LandingPage from './pages/LandingPage/LandingPage'
+// import PartList from './components/PartList/PartList'
 
 function App() {
 	return (
 		<div className="App">
-			{/* <LandingPage /> */}
-			<PartList />
+			<LandingPage />
+			{/* <PartList /> */}
 		</div>
 	)
 }

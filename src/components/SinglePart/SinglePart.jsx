@@ -27,21 +27,9 @@ const SinglePart = ({ number, item, deleteHandler, saveHandler }) => {
 		})
 	}
 
-	function handleEdit() {
-		setIsEditing(true)
-	}
-
-	function handleDelete() {
-		setIsDeleting(true)
-	}
-
 	function handleSave() {
 		saveHandler(partData)
 		setIsEditing((prev) => !prev)
-	}
-
-	function confimDelete() {
-		deleteHandler(partData.id)
 	}
 
 	function handleCancel() {
@@ -64,14 +52,16 @@ const SinglePart = ({ number, item, deleteHandler, saveHandler }) => {
 		} else if (isEditing === false && isDeleting === false) {
 			return (
 				<td>
-					<button onClick={handleEdit}>Edit</button>
-					<button onClick={handleDelete}>Delete</button>
+					<button onClick={() => setIsEditing(true)}>Edit</button>
+					<button onClick={() => setIsDeleting(true)}>Delete</button>
 				</td>
 			)
 		} else if (isDeleting) {
 			return (
 				<td>
-					<button onClick={confimDelete}>Confirm delete</button>
+					<button onClick={() => deleteHandler(partData.id)}>
+						Confirm delete
+					</button>
 					<button onClick={handleCancel}>Cancel</button>
 				</td>
 			)

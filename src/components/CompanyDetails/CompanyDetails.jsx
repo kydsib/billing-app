@@ -1,69 +1,54 @@
 import React from 'react'
 
 import useFrom from '../../hooks/useForm/useForm'
+import TextField from '../form/TextField/TextField'
 
 const CompanyDetails = () => {
-	const { handleChange, handleSubmit, values, errors } = useFrom()
+	const formType = 'company-details'
+	const { handleChange, handleSubmit, values, errors } = useFrom(formType)
 
 	return (
 		<form onSubmit={handleSubmit}>
 			<div className="left-side">
-				<label htmlFor="name">
-					Company Name:
-					<input
-						name="name"
-						onChange={handleChange}
-						id="name"
-						defaultValue={values.name}
-					/>
-				</label>
-				<label htmlFor="address">
-					Address:
-					<input
-						name="address"
-						onChange={handleChange}
-						id="address"
-						defaultValue={values.address}
-					/>
-				</label>
-				<label htmlFor="country">
-					Country:
-					<input
-						name="country"
-						onChange={handleChange}
-						id="country"
-						defaultValue={values.country}
-					/>
-				</label>
+				<TextField
+					label="Company name"
+					value={values.name}
+					handleChange={handleChange}
+					name="name"
+				/>
+				<TextField
+					label="Address"
+					value={values.address}
+					handleChange={handleChange}
+					name="address"
+				/>
+				<TextField
+					label="Country"
+					value={values.country}
+					handleChange={handleChange}
+					name="country"
+				/>
 			</div>
 			<div className="right-side">
-				<label htmlFor="company-code">
-					Company Code:
-					<input
-						name="code"
-						onChange={handleChange}
-						id="company-code"
-						defaultValue={values.code}
-					/>
-				</label>
-				<label htmlFor="vat">
-					Vat:
-					<input
-						name="vat"
-						onChange={handleChange}
-						id="vat"
-						defaultValue={values.vat}
-					/>
-				</label>
-				<label htmlFor="phone">
-					Phone number:
-					<input
-						name="phone"
-						onChange={handleChange}
-						id="phone"
-						defaultValue={values.phone}
-					/>
-				</label>
+				<TextField
+					label="Company Code"
+					type="number"
+					value={values.code}
+					handleChange={handleChange}
+					name="code"
+				/>
+				<TextField
+					label="Vat"
+					value={values.vat}
+					handleChange={handleChange}
+					name="vat"
+				/>
+				<TextField
+					label="Phone"
+					value={values.phone}
+					handleChange={handleChange}
+					name="phone"
+				/>
 			</div>
 		</form>
 	)

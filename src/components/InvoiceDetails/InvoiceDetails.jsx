@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 
 import useForm from '../../hooks/useForm/useForm'
+import TextField from '../form/TextField/TextField'
 
 const InvoiceDetails = () => {
+	const formType = 'invoice'
 	const [currentDate, setCurrentDate] = useState(
 		new Date().toISOString().slice(0, 10)
 	)
-	const { handleChange, handleSubmit, value, errors } = useForm()
+	const { handleChange, handleSubmit, values, errors } = useForm(formType)
 
 	function handleDateChange(event) {
 		const newDate = event.target.value
@@ -15,15 +17,12 @@ const InvoiceDetails = () => {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<label htmlFor="no">
-				No
-				<input onChange={handleChange} name="no" id="no" />
-			</label>
-			{/* make this one not editable?  Or it should auto generate depending if it fits on A4? */}
-			<label htmlFor="page">
-				Page
-				<input onChange={handleChange} name="page" id="page" />
-			</label>
+			<TextField
+				label="Invoice Number"
+				value={values.invoiceNumber}
+				handleChange={handleChange}
+				name="invoiceNumber"
+			/>
 			<label htmlFor="date">
 				Date
 				<input
@@ -35,35 +34,37 @@ const InvoiceDetails = () => {
 					data-testid="date-input"
 				/>
 			</label>
-			<label htmlFor="po-ref">
-				PO Ref.
-				<input onChange={handleChange} name="po-ref" id="po-ref" />
-			</label>
-			<label htmlFor="terms">
-				Terms
-				<input onChange={handleChange} name="terms" id="terms" />
-			</label>
-			<label htmlFor="ship-via">
-				Ship via
-				<input onChange={handleChange} name="ship-via" id="ship-via" />
-			</label>
-			<label htmlFor="acc-number">
-				Account No
-				<input
-					onChange={handleChange}
-					name="acc-number"
-					id="acc-number"
-				/>
-			</label>
-			<label htmlFor="prepared-by">
-				Prepared by
-				<input
-					onChange={handleChange}
-					name="prepared-by"
-					defaultValue="Paul"
-					id="prepared-by"
-				/>
-			</label>
+			<TextField
+				label="Po Ref"
+				value={values.poRef}
+				handleChange={handleChange}
+				name="poRef"
+			/>
+			<TextField
+				label="Terms"
+				value={values.terms}
+				handleChange={handleChange}
+				name="terms"
+			/>
+			<TextField
+				label="Ship Via"
+				value={values.shipVia}
+				handleChange={handleChange}
+				name="shipVia"
+			/>
+
+			<TextField
+				label="Account No"
+				value={values.accNumber}
+				handleChange={handleChange}
+				name="accNumber"
+			/>
+			<TextField
+				label="Prepared by"
+				value={values.preparedBy}
+				handleChange={handleChange}
+				name="preparedBy"
+			/>
 		</form>
 	)
 }
